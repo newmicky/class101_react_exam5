@@ -1,11 +1,23 @@
+import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import ListPage from "./pages/ListPage";
 import WritePage from "./pages/WritePage";
 
 function App() {
   return (
     <>
-      <ListPage />
-      <WritePage />
+      <header className="flex">
+        <NavLink to="/list" className="font-bold p-5 hover:text-red-500">
+          리스트
+        </NavLink>
+        <NavLink to="/write" className="font-bold p-5 hover:text-red-500">
+          작성
+        </NavLink>
+      </header>
+      <Routes>
+        <Route path="/list" element={<ListPage />} />
+        <Route path="/write" element={<WritePage />} />
+        <Route path="*" element={<Navigate to="/list" />} />
+      </Routes>
     </>
   );
 }
